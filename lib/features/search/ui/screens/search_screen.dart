@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,6 +31,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   String searchQuery = '';
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -36,17 +39,28 @@ class _SearchScreenState extends State<SearchScreen> {
     context.read<SearchProductsCubit>().resetToInitialState();
   }
 
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
+  }
+
   void _onSearchChanged(String query) {
-    setState(() {
-      searchQuery = query;
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      setState(() {
+        searchQuery = query;
+      });
+
+      if (query.isNotEmpty) {
+        context.read<SearchProductsCubit>().getProductsBySearch(
+          searchedProduct: query,
+        );
+      } else {
+        context.read<SearchProductsCubit>().resetToInitialState();
+      }
     });
-    if (query.isNotEmpty) {
-      context.read<SearchProductsCubit>().getProductsBySearch(
-        searchedProduct: query,
-      );
-    } else {
-      context.read<SearchProductsCubit>().resetToInitialState();
-    }
   }
 
   void _onClearSearch() {

@@ -6,7 +6,7 @@ class ApiConstants {
   static const String apiSearch = "Product";
   static const String apiAllCategory = "Category";
   static const String apiProductDetails = "Product";
-  static const String apiOrderHistory = "Order";
+  static const String apiOrderHistory = "Order/User/Orders";
   static const String apiOrderHistoryDetails = "Order/order";
   static const String apiDeliveryMethod = "DeliveryMethod";
 

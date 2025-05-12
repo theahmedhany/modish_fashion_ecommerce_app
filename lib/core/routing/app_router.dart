@@ -180,14 +180,13 @@ class AppRouter {
 
       // Order History Screen
       case Routes.ordersHistoryScreen:
-        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder:
               (_) => BlocProvider(
                 create:
                     (context) =>
                         OrderHistoryCubit(getIt<OrderHistoryRepo>())
-                          ..emitGetOrderHistory(args['appUserId']),
+                          ..emitGetOrderHistory(),
                 child: OrdersHistoryScreen(),
               ),
         );
@@ -201,10 +200,7 @@ class AppRouter {
                 create:
                     (context) => OrderHistoryDetailsCubit(
                       getIt<OrderHistoryDetailsRepo>(),
-                    )..emitGetOrderHistoryDetails(
-                      args['productId'],
-                      args['appUserId'],
-                    ),
+                    )..emitGetOrderHistoryDetails(args['productId']),
                 child: OrdersHistoryDetailsScreen(),
               ),
         );

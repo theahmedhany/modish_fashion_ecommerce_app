@@ -20,6 +20,17 @@ class SearchMainBar extends StatefulWidget {
 
 class _SearchMainBarState extends State<SearchMainBar> {
   final TextEditingController _searchController = TextEditingController();
+  bool _showClearButton = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(() {
+      setState(() {
+        _showClearButton = _searchController.text.isNotEmpty;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -30,6 +41,9 @@ class _SearchMainBarState extends State<SearchMainBar> {
   void _clearSearch() {
     _searchController.clear();
     widget.onClearSearch();
+    setState(() {
+      _showClearButton = false;
+    });
   }
 
   @override
@@ -47,12 +61,10 @@ class _SearchMainBarState extends State<SearchMainBar> {
           horizontal: 26,
           vertical: 18,
         ),
-
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50),
           borderSide: BorderSide.none,
         ),
-
         hintStyle: TextStyle(color: AppColors.kTextColor, fontSize: 14.sp),
         hintText: 'Search products...',
         prefixIcon: Padding(
@@ -72,18 +84,14 @@ class _SearchMainBarState extends State<SearchMainBar> {
           maxHeight: 20.r,
           maxWidth: 45.r,
         ),
-
         fillColor: Colors.white,
         filled: true,
-
         suffixIcon:
-            _searchController.text.isNotEmpty
+            _showClearButton
                 ? IconButton(
                   padding: EdgeInsets.only(right: 14.r),
-
                   icon: Icon(
                     size: 20.r,
-
                     Icons.clear,
                     color: AppColors.kTextColor,
                   ),

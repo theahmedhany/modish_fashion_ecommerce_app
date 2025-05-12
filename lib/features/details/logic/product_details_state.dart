@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/networking/api_network_exceptions.dart';
+import '../../../core/networking/api_error_model.dart';
 
 part 'product_details_state.freezed.dart';
 
@@ -12,7 +12,6 @@ class ProductDetailsState<T> with _$ProductDetailsState<T> {
 
   const factory ProductDetailsState.success(T data) = Success<T>;
 
-  const factory ProductDetailsState.error(
-    ApiNetworkExceptions networkExceptions,
-  ) = Error<T>;
+  const factory ProductDetailsState.error(ApiErrorModel networkExceptions) =
+      Error<T>;
 }

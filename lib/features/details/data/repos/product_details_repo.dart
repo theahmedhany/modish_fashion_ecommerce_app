@@ -1,8 +1,7 @@
-import '../models/product_details_model.dart';
-
 import '../../../../core/networking/api_network_exceptions.dart';
 import '../../../../core/networking/api_result.dart';
 import '../../../../core/networking/api_services.dart';
+import '../models/product_details_model.dart';
 
 class ProductDetailsRepo {
   final ApiServices apiServices;

@@ -58,15 +58,15 @@ abstract class ApiServices {
 
   // Get Order History API
   @GET(ApiConstants.apiOrderHistory)
-  Future<List<OrderHistoryModel>> getOrdersHistory(
-    @Query("AppUserId") String appUserId,
+  Future<OrderHistoryResponse> getOrdersHistory(
+    @Query("page") int pageIndex,
+    @Query("pageSize") int pageSize,
   );
 
   // Get Order History Details API
   @GET(ApiConstants.apiOrderHistoryDetails)
   Future<OrderHistoryDetailsModel> getOrdersHistoryDetails(
     @Query("id") String id,
-    @Query("AppUserId") String appUserId,
   );
 
   // Get Delivery Method API

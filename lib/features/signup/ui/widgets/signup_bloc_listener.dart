@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../logic/signup_cubit.dart';
-import '../../logic/signup_state.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/widgets/custom_alert_dialog.dart';
 import '../../../../core/widgets/main_loading_indicator.dart';
+import '../../logic/signup_cubit.dart';
+import '../../logic/signup_state.dart';
 
 class SignupBlocListener extends StatelessWidget {
   const SignupBlocListener({super.key});

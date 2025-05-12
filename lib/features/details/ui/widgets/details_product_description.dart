@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../data/models/product_details_model.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/app_fonts.dart';
+import '../../data/models/product_details_model.dart';
 
 class DetailsProductDescription extends StatelessWidget {
   const DetailsProductDescription({super.key, required this.details});

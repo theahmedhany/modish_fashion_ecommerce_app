@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/networking/api_network_exceptions.dart';
+
+import '../../../../core/networking/api_error_model.dart';
 
 part 'order_history_state.freezed.dart';
 
@@ -11,7 +12,5 @@ class OrderHistoryState<T> with _$OrderHistoryState<T> {
 
   const factory OrderHistoryState.success(T data) = Success<T>;
 
-  const factory OrderHistoryState.error(
-    ApiNetworkExceptions networkExceptions,
-  ) = Error<T>;
+  const factory OrderHistoryState.error(ApiErrorModel errorModel) = Error<T>;
 }

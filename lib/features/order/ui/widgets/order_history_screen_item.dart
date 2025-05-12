@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_fonts.dart';
 
@@ -11,10 +11,16 @@ class OrderHistoryScreenItem extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.press,
+    this.statusColor,
+    this.amount,
+    this.items,
   });
 
   final String title, subTitle;
   final VoidCallback press;
+  final Color? statusColor;
+  final String? amount;
+  final String? items;
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +57,41 @@ class OrderHistoryScreenItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          subtitle: Text(
-            subTitle,
-            maxLines: 1,
-            style: AppFonts.font14GreyRegular.copyWith(
-              overflow: TextOverflow.ellipsis,
-            ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                subTitle,
+                maxLines: 1,
+                style: AppFonts.font14GreyRegular.copyWith(
+                  overflow: TextOverflow.ellipsis,
+                  color: statusColor,
+                ),
+              ),
+              if (items != null || amount != null) SizedBox(height: 4.h),
+              if (items != null || amount != null)
+                Row(
+                  children: [
+                    if (items != null)
+                      Text(
+                        items!,
+                        style: AppFonts.font12GreyRegular.copyWith(
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    if (items != null && amount != null)
+                      Text(' • ', style: AppFonts.font12GreyRegular),
+                    if (amount != null)
+                      Text(
+                        amount!,
+                        style: AppFonts.font12GreyRegular.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.kPrimaryColor,
+                        ),
+                      ),
+                  ],
+                ),
+            ],
           ),
           trailing: Icon(
             Icons.arrow_forward_ios_rounded,

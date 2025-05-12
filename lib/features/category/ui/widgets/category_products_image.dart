@@ -5,10 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/widgets/custom_progress_indicator.dart';
 
-class SearchProductImage extends StatelessWidget {
+class CategoryProductsImage extends StatelessWidget {
   final String imageSrc;
 
-  const SearchProductImage({super.key, required this.imageSrc});
+  const CategoryProductsImage({super.key, required this.imageSrc});
 
   @override
   Widget build(BuildContext context) {

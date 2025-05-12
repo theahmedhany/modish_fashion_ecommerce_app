@@ -22,21 +22,21 @@ mixin _$ProductDetailsState<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel networkExceptions) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel networkExceptions)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel networkExceptions)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -135,7 +135,7 @@ class _$IdleImpl<T> implements Idle<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel networkExceptions) error,
   }) {
     return idle();
   }
@@ -146,7 +146,7 @@ class _$IdleImpl<T> implements Idle<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel networkExceptions)? error,
   }) {
     return idle?.call();
   }
@@ -157,7 +157,7 @@ class _$IdleImpl<T> implements Idle<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -254,7 +254,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel networkExceptions) error,
   }) {
     return loading();
   }
@@ -265,7 +265,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel networkExceptions)? error,
   }) {
     return loading?.call();
   }
@@ -276,7 +276,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -401,7 +401,7 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel networkExceptions) error,
   }) {
     return success(data);
   }
@@ -412,7 +412,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel networkExceptions)? error,
   }) {
     return success?.call(data);
   }
@@ -423,7 +423,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -489,7 +489,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
     $Res Function(_$ErrorImpl<T>) then,
   ) = __$$ErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({ApiNetworkExceptions networkExceptions});
+  $Res call({ApiErrorModel networkExceptions});
 }
 
 /// @nodoc
@@ -511,7 +511,7 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
         null == networkExceptions
             ? _value.networkExceptions
             : networkExceptions // ignore: cast_nullable_to_non_nullable
-                as ApiNetworkExceptions,
+                as ApiErrorModel,
       ),
     );
   }
@@ -523,7 +523,7 @@ class _$ErrorImpl<T> implements Error<T> {
   const _$ErrorImpl(this.networkExceptions);
 
   @override
-  final ApiNetworkExceptions networkExceptions;
+  final ApiErrorModel networkExceptions;
 
   @override
   String toString() {
@@ -556,7 +556,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel networkExceptions) error,
   }) {
     return error(networkExceptions);
   }
@@ -567,7 +567,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel networkExceptions)? error,
   }) {
     return error?.call(networkExceptions);
   }
@@ -578,7 +578,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -626,10 +626,9 @@ class _$ErrorImpl<T> implements Error<T> {
 }
 
 abstract class Error<T> implements ProductDetailsState<T> {
-  const factory Error(final ApiNetworkExceptions networkExceptions) =
-      _$ErrorImpl<T>;
+  const factory Error(final ApiErrorModel networkExceptions) = _$ErrorImpl<T>;
 
-  ApiNetworkExceptions get networkExceptions;
+  ApiErrorModel get networkExceptions;
 
   /// Create a copy of ProductDetailsState
   /// with the given fields replaced by the non-null parameter values.

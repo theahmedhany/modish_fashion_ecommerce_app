@@ -56,13 +56,13 @@ class ShippingAddress {
 
 @JsonSerializable()
 class Items {
+  String? id;
   Product? product;
   int? price;
   int? quantity;
-  String? id;
   String? createdAt;
 
-  Items({this.product, this.price, this.quantity, this.id, this.createdAt});
+  Items({this.id, this.product, this.price, this.quantity, this.createdAt});
 
   factory Items.fromJson(Map<String, dynamic> json) => _$ItemsFromJson(json);
 

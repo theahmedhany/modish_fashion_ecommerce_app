@@ -4,30 +4,37 @@ part 'product_details_model.g.dart';
 
 @JsonSerializable()
 class ProductDetailsModel {
+  @JsonKey(name: 'productId')
   String? id;
   String? name;
   String? description;
   String? pictureUrl;
-  String? size;
-  String? colors;
+  List<String>? sizes;
+  List<String>? colors;
   int? stockQuantity;
   double? price;
   List<Review>? reviews;
   String? categoryName;
   String? categoryId;
+  bool? isInFav;
+  bool? isInCart;
+  int? quantityInBasket;
 
   ProductDetailsModel({
     this.id,
     this.name,
     this.description,
     this.pictureUrl,
-    this.size,
+    this.sizes,
     this.colors,
     this.stockQuantity,
     this.price,
     this.reviews,
     this.categoryName,
     this.categoryId,
+    this.isInFav,
+    this.isInCart,
+    this.quantityInBasket,
   });
 
   factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>

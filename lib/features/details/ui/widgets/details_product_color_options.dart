@@ -17,7 +17,9 @@ class DetailsProductColorOptions extends StatelessWidget {
       children: [
         Text('Color : ', style: AppFonts.font16DarkMedium),
         Text(
-          details.colors ?? 'Unknown Color',
+          details.colors != null && details.colors!.isNotEmpty
+              ? details.colors!.join(', ')
+              : 'Unknown Color',
           style: AppFonts.font14GreyRegular,
         ),
         Spacer(),
@@ -39,8 +41,8 @@ class DetailsProductColorOptions extends StatelessWidget {
     );
   }
 
-  List<Color> _parseColors(String? colorString) {
-    if (colorString == null || colorString.isEmpty) {
+  List<Color> _parseColors(List<String>? colorList) {
+    if (colorList == null || colorList.isEmpty) {
       return [
         Colors.redAccent,
         Colors.blueAccent,
@@ -73,14 +75,14 @@ class DetailsProductColorOptions extends StatelessWidget {
       ];
     }
 
-    List<String> colorStrings =
-        colorString.split(',').map((e) => e.trim()).toList();
     List<Color> colors = [];
 
-    for (String colorStr in colorStrings) {
-      if (colorStr.startsWith('#')) {
+    for (String colorStr in colorList) {
+      String trimmedColor = colorStr.trim();
+
+      if (trimmedColor.startsWith('#')) {
         try {
-          String hexCode = colorStr.replaceAll('#', '');
+          String hexCode = trimmedColor.replaceAll('#', '');
           if (hexCode.length == 6) {
             int colorValue = int.parse('0xFF$hexCode');
             colors.add(Color(colorValue));
@@ -91,7 +93,7 @@ class DetailsProductColorOptions extends StatelessWidget {
           colors.add(Colors.grey);
         }
       } else {
-        switch (colorStr.toLowerCase()) {
+        switch (trimmedColor.toLowerCase()) {
           case 'red':
             colors.add(Colors.red);
             break;

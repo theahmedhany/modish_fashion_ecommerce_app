@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helpers/constants.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -170,7 +171,7 @@ class OrdersHistoryDetailsScreen extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              '${orderData.status}.',
+                              '${orderData.status?.toUpperCase()}.',
                               maxLines: 1,
                               style: AppFonts.font14GreyRegular.copyWith(
                                 overflow: TextOverflow.ellipsis,
@@ -221,7 +222,7 @@ class OrdersHistoryDetailsScreen extends StatelessWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Payment Method: ${orderData.paymentMethod ?? 'Unknown Method'}',
+                              'Payment Method: ${orderData.paymentMethod ?? 'Unknown Method'}.',
                               maxLines: 1,
                               style: AppFonts.font14GreyRegular.copyWith(
                                 overflow: TextOverflow.ellipsis,

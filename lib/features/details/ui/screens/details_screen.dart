@@ -4,11 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/app_colors.dart';
-import '../../../../core/theming/app_fonts.dart';
 import '../../../../core/widgets/main_loading_indicator.dart';
-import '../../data/models/product_details_model.dart';
 import '../../logic/product_details_cubit.dart';
 import '../../logic/product_details_state.dart';
+import '../widgets/category_details_name.dart';
 import '../widgets/details_buy_section.dart';
 import '../widgets/details_product_color_options.dart';
 import '../widgets/details_product_description.dart';
@@ -72,20 +71,6 @@ class DetailsScreen extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class CategoryDetailsName extends StatelessWidget {
-  const CategoryDetailsName({super.key, required this.details});
-
-  final ProductDetailsModel details;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      details.categoryName ?? 'Unknown Category',
-      style: AppFonts.font12GreyMedium,
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/networking/api_error_model.dart';
-import '../../../core/networking/api_network_exceptions.dart';
 import '../data/models/product_details_model.dart';
 import '../data/repos/product_details_repo.dart';
 import 'product_details_state.dart';
@@ -19,7 +18,7 @@ class ProductDetailsCubit
         emit(ProductDetailsState.success(productDetails));
       },
       failure: (ApiErrorModel apiError) {
-        emit(ProductDetailsState.error(apiError as ApiNetworkExceptions));
+        emit(ProductDetailsState.error(apiError));
       },
     );
   }

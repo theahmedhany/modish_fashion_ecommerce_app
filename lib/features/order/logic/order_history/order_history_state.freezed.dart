@@ -22,21 +22,21 @@ mixin _$OrderHistoryState<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel errorModel) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel errorModel)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel errorModel)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -135,7 +135,7 @@ class _$IdleImpl<T> implements Idle<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel errorModel) error,
   }) {
     return idle();
   }
@@ -146,7 +146,7 @@ class _$IdleImpl<T> implements Idle<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel errorModel)? error,
   }) {
     return idle?.call();
   }
@@ -157,7 +157,7 @@ class _$IdleImpl<T> implements Idle<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel errorModel)? error,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -254,7 +254,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel errorModel) error,
   }) {
     return loading();
   }
@@ -265,7 +265,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel errorModel)? error,
   }) {
     return loading?.call();
   }
@@ -276,7 +276,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel errorModel)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -401,7 +401,7 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel errorModel) error,
   }) {
     return success(data);
   }
@@ -412,7 +412,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel errorModel)? error,
   }) {
     return success?.call(data);
   }
@@ -423,7 +423,7 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel errorModel)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -489,7 +489,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
     $Res Function(_$ErrorImpl<T>) then,
   ) = __$$ErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({ApiNetworkExceptions networkExceptions});
+  $Res call({ApiErrorModel errorModel});
 }
 
 /// @nodoc
@@ -505,13 +505,13 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? networkExceptions = null}) {
+  $Res call({Object? errorModel = null}) {
     return _then(
       _$ErrorImpl<T>(
-        null == networkExceptions
-            ? _value.networkExceptions
-            : networkExceptions // ignore: cast_nullable_to_non_nullable
-                as ApiNetworkExceptions,
+        null == errorModel
+            ? _value.errorModel
+            : errorModel // ignore: cast_nullable_to_non_nullable
+                as ApiErrorModel,
       ),
     );
   }
@@ -520,14 +520,14 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$ErrorImpl<T> implements Error<T> {
-  const _$ErrorImpl(this.networkExceptions);
+  const _$ErrorImpl(this.errorModel);
 
   @override
-  final ApiNetworkExceptions networkExceptions;
+  final ApiErrorModel errorModel;
 
   @override
   String toString() {
-    return 'OrderHistoryState<$T>.error(networkExceptions: $networkExceptions)';
+    return 'OrderHistoryState<$T>.error(errorModel: $errorModel)';
   }
 
   @override
@@ -535,12 +535,12 @@ class _$ErrorImpl<T> implements Error<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl<T> &&
-            (identical(other.networkExceptions, networkExceptions) ||
-                other.networkExceptions == networkExceptions));
+            (identical(other.errorModel, errorModel) ||
+                other.errorModel == errorModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, networkExceptions);
+  int get hashCode => Object.hash(runtimeType, errorModel);
 
   /// Create a copy of OrderHistoryState
   /// with the given fields replaced by the non-null parameter values.
@@ -556,9 +556,9 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() idle,
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(ApiNetworkExceptions networkExceptions) error,
+    required TResult Function(ApiErrorModel errorModel) error,
   }) {
-    return error(networkExceptions);
+    return error(errorModel);
   }
 
   @override
@@ -567,9 +567,9 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? idle,
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult? Function(ApiErrorModel errorModel)? error,
   }) {
-    return error?.call(networkExceptions);
+    return error?.call(errorModel);
   }
 
   @override
@@ -578,11 +578,11 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? idle,
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(ApiNetworkExceptions networkExceptions)? error,
+    TResult Function(ApiErrorModel errorModel)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(networkExceptions);
+      return error(errorModel);
     }
     return orElse();
   }
@@ -626,10 +626,9 @@ class _$ErrorImpl<T> implements Error<T> {
 }
 
 abstract class Error<T> implements OrderHistoryState<T> {
-  const factory Error(final ApiNetworkExceptions networkExceptions) =
-      _$ErrorImpl<T>;
+  const factory Error(final ApiErrorModel errorModel) = _$ErrorImpl<T>;
 
-  ApiNetworkExceptions get networkExceptions;
+  ApiErrorModel get errorModel;
 
   /// Create a copy of OrderHistoryState
   /// with the given fields replaced by the non-null parameter values.

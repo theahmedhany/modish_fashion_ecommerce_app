@@ -180,31 +180,31 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<List<OrderHistoryModel>> getOrdersHistory(String appUserId) async {
+  Future<OrderHistoryResponse> getOrdersHistory(
+    int pageIndex,
+    int pageSize,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'AppUserId': appUserId};
+    final queryParameters = <String, dynamic>{
+      r'page': pageIndex,
+      r'pageSize': pageSize,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<OrderHistoryModel>>(
+    final _options = _setStreamType<OrderHistoryResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'Order',
+            'Order/User/Orders',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<OrderHistoryModel> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OrderHistoryResponse _value;
     try {
-      _value =
-          _result.data!
-              .map(
-                (dynamic i) =>
-                    OrderHistoryModel.fromJson(i as Map<String, dynamic>),
-              )
-              .toList();
+      _value = OrderHistoryResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -213,15 +213,9 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<OrderHistoryDetailsModel> getOrdersHistoryDetails(
-    String id,
-    String appUserId,
-  ) async {
+  Future<OrderHistoryDetailsModel> getOrdersHistoryDetails(String id) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'id': id,
-      r'AppUserId': appUserId,
-    };
+    final queryParameters = <String, dynamic>{r'id': id};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<OrderHistoryDetailsModel>(

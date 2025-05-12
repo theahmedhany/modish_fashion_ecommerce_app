@@ -61,21 +61,21 @@ Map<String, dynamic> _$ShippingAddressToJson(ShippingAddress instance) =>
     };
 
 Items _$ItemsFromJson(Map<String, dynamic> json) => Items(
+  id: json['id'] as String?,
   product:
       json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),
   price: (json['price'] as num?)?.toInt(),
   quantity: (json['quantity'] as num?)?.toInt(),
-  id: json['id'] as String?,
   createdAt: json['createdAt'] as String?,
 );
 
 Map<String, dynamic> _$ItemsToJson(Items instance) => <String, dynamic>{
+  'id': instance.id,
   'product': instance.product,
   'price': instance.price,
   'quantity': instance.quantity,
-  'id': instance.id,
   'createdAt': instance.createdAt,
 };
 

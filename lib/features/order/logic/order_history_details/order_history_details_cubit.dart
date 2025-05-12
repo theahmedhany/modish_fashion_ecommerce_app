@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/networking/api_error_model.dart';
 import '../../../../core/networking/api_network_exceptions.dart';
 import '../../data/models/order_history_details/order_history_details_model.dart';
@@ -11,11 +12,8 @@ class OrderHistoryDetailsCubit
 
   OrderHistoryDetailsCubit(this.orderHistoryDetailsRepo) : super(const Idle());
 
-  void emitGetOrderHistoryDetails(String productId, String appUserId) async {
-    var data = await orderHistoryDetailsRepo.getOrdersHistoryDetails(
-      productId,
-      appUserId,
-    );
+  void emitGetOrderHistoryDetails(String productId) async {
+    var data = await orderHistoryDetailsRepo.getOrdersHistoryDetails(productId);
     data.when(
       success: (OrderHistoryDetailsModel orderDetails) {
         emit(OrderHistoryDetailsState.success(orderDetails));

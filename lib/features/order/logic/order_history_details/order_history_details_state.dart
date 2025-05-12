@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/networking/api_network_exceptions.dart';
 
 part 'order_history_details_state.freezed.dart';

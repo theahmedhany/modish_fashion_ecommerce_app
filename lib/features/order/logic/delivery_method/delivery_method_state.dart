@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/networking/api_network_exceptions.dart';
 
 part 'delivery_method_state.freezed.dart';
