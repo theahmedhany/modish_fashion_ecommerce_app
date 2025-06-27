@@ -105,6 +105,8 @@ Planned improvements and additions include:
 
 #### To see **Modish** in action, check out the video below:
 
+https://github.com/user-attachments/assets/4d0a5ae1-2c09-4673-9761-cf38b0107649
+
 ---
 
 <h3 align="center">
